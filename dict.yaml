@@ -1,0 +1,324 @@
+input:
+  attrName: ""
+  attrID: ""
+  key: ""
+  type: INPUT
+  explain: ""
+  name: 单行文本
+  dataReport: false
+  mustFill: false
+  isOperate: true
+  conditionMustFill: false
+  default: ""
+  inspection: ""
+  min: ""
+  max: ""
+  cruxAttribute: false
+  autoCollect: false
+  switchRules: false
+  cruxAttr: [
+  ]
+textares:
+  attrName: ""
+  attrID: ""
+  key: ""
+  type: ""
+  explain: ""
+  name: ""
+  dataReport: false
+  mustFill: false
+  isOperate: true
+  conditionMustFill: false
+  default: ''
+  min: ''
+  max: ''
+  cruxAttribute: false
+  autoCollect: false
+  inspection: ''
+  switchRules: false
+  cruxAttr: [
+  ]
+select:
+  attrName: ""
+  attrID: ""
+  key: '1663928090000370843'
+  type: SELECT
+  explain: ''
+  name: 下拉列表
+  dataReport: false
+  mustFill: false
+  isOperate: true
+  conditionMustFill: false
+  items:
+    - itemName: HUAWEI
+      itemId: '1'
+      check: true
+    - itemName: H3
+      itemId: '2'
+      check: false
+    - itemName: 华为
+      itemId: '3'
+      check: false
+  cruxAttribute: false
+  autoCollect: false
+  dictionaries: '1111'
+  cruxAttr: [
+  ]
+radio:
+  attrName: 单选
+  attrID: dx
+  key: '1663928124000486183'
+  type: RADIO
+  explain: ''
+  name: 单选
+  dataReport: false
+  mustFill: false
+  isOperate: true
+  conditionMustFill: false
+  items:
+    - itemName: HUAWEI
+      itemId: '1'
+      check: true
+    - itemName: H3
+      itemId: '2'
+      check: false
+    - itemName: 华为
+      itemId: '3'
+      check: false
+  cruxAttribute: false
+  dictionaries: '1111'
+  autoCollect: false
+  cruxAttr: [
+  ]
+checkbox:
+  attrName: ""
+  attrID: fx
+  key: '166392813800049108'
+  type: CHECKBOX
+  explain: ''
+  name: 复选
+  dataReport: false
+  mustFill: false
+  isOperate: true
+  conditionMustFill: false
+  items:
+    - itemName: HUAWEI
+      itemId: '1'
+      check: true
+    - itemName: H3
+      itemId: '2'
+      check: false
+    - itemName: 华为
+      itemId: '3'
+      check: false
+  cruxAttribute: false
+  dictionaries: '1111'
+  autoCollect: false
+  cruxAttr: [
+  ]
+decimals:
+  attrName: ""
+  attrID: xs
+  key: '1663928153000931059'
+  type: DECIMALS
+  explain: ''
+  name: 小数
+  dataReport: false
+  mustFill: false
+  isOperate: true
+  conditionMustFill: false
+  default: ''
+  decimal: 2
+  unit: ''
+  min: ''
+  max: ''
+  cruxAttribute: false
+  autoCollect: false
+  cruxAttr: [
+  ]
+integer:
+  attrName:
+  attrID: zs
+  key: '1663928170000759184'
+  type: INTEGER
+  explain: ''
+  name: 整数
+  dataReport: false
+  mustFill: false
+  isOperate: true
+  conditionMustFill: false
+  default: ''
+  unit: ''
+  min: ''
+  max: ''
+  cruxAttribute: false
+  autoCollect: false
+  cruxAttr: [
+  ]
+list:
+  attrName: 表格
+  attrID: bg
+  key: '166392818400035468'
+  type: LIST
+  explain: ''
+  name: 表格
+  dataReport: false
+  mustFill: false
+  isOperate: true
+  autoCollect: false
+  items:
+    - columnName: '1'
+      columnId: a
+      type: INTEGER
+      default: ''
+      max: ''
+      min: ''
+      unit: ''
+  cruxAttr: [
+  ]
+time:
+  attrName: 日期
+  attrID: rq
+  key: '166392819500014870'
+  type: TIME
+  explain: ''
+  name: 日期
+  dataReport: false
+  mustFill: false
+  isOperate: true
+  conditionMustFill: false
+  default: ''
+  cruxAttribute: false
+  autoCollect: false
+  dateFormat: YYYY-MM-DD HH:mm:ss
+  cruxAttr: [
+  ]
+personnel:
+  attrName: 人员
+  attrID: ry
+  key: '1663928215000953452'
+  type: PERSONNEL
+  explain: ''
+  name: 人员
+  dataReport: false
+  mustFill: false
+  isOperate: true
+  conditionMustFill: false
+  items: [
+  ]
+  autoCollect: false
+  cruxAttr: [
+  ]
+image:
+  attrName: 图片
+  attrID: tp
+  key: '1663928259000302750'
+  type: IMAGE
+  explain: ''
+  name: 图片
+  dataReport: false
+  mustFill: false
+  isOperate: true
+  conditionMustFill: false
+  cruxAttribute: false
+  cruxAttr: [
+  ]
+accessory:
+  attrName: 附件
+  attrID: fj
+  key: '1663928270000415713'
+  type: ACCESSORY
+  explain: ''
+  name: 附件
+  dataReport: false
+  mustFill: false
+  isOperate: true
+  conditionMustFill: false
+  cruxAttribute: false
+  cruxAttr: [
+  ]
+boolean:
+  attrName: 布尔
+  attrID: buer
+  key: '1663928281000869647'
+  type: BOOLEAN
+  explain: ''
+  name: 布尔型
+  dataReport: false
+  mustFill: false
+  isOperate: true
+  conditionMustFill: false
+  items: [
+  ]
+  default: ''
+  inspection: ''
+  min: ''
+  max: ''
+  cruxAttribute: false
+  autoCollect: false
+  switchRules: false
+  cruxAttr: [
+  ]
+quote:
+  attrName: 引用
+  attrID: yy
+  key: '1663928292000745598'
+  type: QUOTE
+  explain: ''
+  name: 引用
+  dataReport: false
+  mustFill: false
+  isOperate: true
+  conditionMustFill: false
+  subordinateModel:
+    - '01'
+  autoCollect: false
+  cruxAttribute: false
+  cruxAttr: [
+  ]
+calculation:
+  attrName: 计算
+  attrID: js
+  key: '1663928314000821576'
+  type: CALCULATION
+  explain: ''
+  name: 计算属性
+  dataReport: false
+  mustFill: false
+  isOperate: true
+  ruleContent: [
+  ]
+  cruxAttr: [
+  ]
+assetcode:
+  attrName: Code码
+  attrID: code
+  key: '1663928331000973509'
+  type: ASSETCODE
+  explain: ''
+  name: Code码
+  dataReport: false
+  mustFill: false
+  isOperate: true
+  roleContent:
+    - i: e3c0f7bd8392db0e7fec42250928c531
+      x: 0
+      y: 0
+      w: 1
+      h: 2
+      static: true
+      itamKey: modelId
+      spaceChar: '-'
+      order: 0
+    - i: bdedafee605f37e9a88cb5cf82a52a21
+      x: 0
+      y: 2
+      w: 1
+      h: 2
+      static: true
+      itamKey: groupId
+      spaceChar: '-'
+      order: 1
+  serialNumber: 5
+  cruxAttr: [
+  ]
