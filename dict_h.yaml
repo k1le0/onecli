@@ -1,0 +1,48 @@
+input:
+  w: 2
+  h: 1
+textares:
+  w: 2
+  h: 4
+select:
+  w: 2
+  h: 1
+radio:
+  w: 2
+  h: 1
+checkbox:
+  w: 2
+  h: 1
+decimals:
+  w: 2
+  h: 1
+integer:
+  w: 2
+  h: 1
+list:
+  w: 2
+  h: 4
+time:
+  w: 2
+  h: 1
+personnel:
+  w: 2
+  h: 1
+image:
+  w: 2
+  h: 1
+accessory:
+  w: 2
+  h: 1
+boolean:
+  w: 2
+  h: 1
+quote:
+  w: 2
+  h: 1
+calculation:
+  w: 2
+  h: 1
+assetcode:
+  w: 2
+  h: 1
