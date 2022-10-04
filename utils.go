@@ -15,8 +15,7 @@ const (
 )
 
 var (
-	e = flag.String("e", "target.xlsx", "target.xlsx")
-	r = flag.String("r", "result.yaml", "result.yaml")
+	e = flag.String("e", "target_update.xlsx", "target_update.xlsx")
 	d = flag.String("d", "dict.yaml", "dict.yaml")
 	h = flag.String("h", "dict_h.yaml", "dict_h.yaml")
 )

@@ -6,14 +6,15 @@ import (
 	"github.com/xuri/excelize/v2"
 	"gopkg.in/yaml.v3"
 	"os"
+	"strings"
 )
 
 func main() {
-	PrintVersion()
 
 	flag.Parse()
 
-	fmt.Printf("excel: %v, result: %v, dict: %v, dict_h: %v\n", *e, *r, *d, *h)
+	fmt.Printf("excel: %v, dict: %v, dict_h: %v\n", *e, *d, *h)
+
 	WriteYaml(ReadExcel())
 }
 
@@ -26,7 +27,7 @@ func ReadExcel() map[string]map[string][]string {
 	//model1-group2-attribute[4,5,6]
 	//model2-group1-attribute[7,8,9]
 	result := make(map[string]map[string][]string)
-	if rows, err := f.GetRows("Sheet1"); err == nil {
+	if rows, err := f.GetRows("Template"); err == nil {
 		for number, row := range rows {
 			if 0 < number {
 				if 1 > len(result) || nil == result[AppendStr(row[0], row[1], "")] {
@@ -76,12 +77,54 @@ func WriteYaml(result map[string]map[string][]string) {
 		for gk, gv := range mv {
 			groupId, groupName, _ := SplitStr(gk)
 			var data []interface{}
+			if strings.Contains(groupName, "默认属性") {
+				_defaultAttribute := GetDict("default")
+				_key := GetTimeStamp()
+				_defaultAttribute["key"] = _key
+				_defaultAttribute["cruxAttr"] = CruxAttr{
+					"名称",
+					"ci_name",
+					_key,
+				}
+				data = append(data, _defaultAttribute)
+				_defaultCoordinate := Coordinate{}
+				_defaultCoordinate.Key = _key
+				_defaultCoordinate.X = coordinateX
+				coordinateY = coordinateY + GetDictH("default")["h"]
+				_defaultCoordinate.Y = coordinateY
+				_defaultCoordinate.W = coordinateW
+				_defaultCoordinate.H = GetDictH("default")["h"]
+				_defaultCoordinate.I = _key
+				coordinate = append(coordinate, _defaultCoordinate)
+				_cruxAttribute := CruxAttribute{
+					true,
+					[]KeyWord{
+						{
+							"名称",
+							"ci_name",
+							_key,
+						},
+					},
+					false,
+				}
+				cruxAttributes = append(cruxAttributes, _cruxAttribute)
+			}
+			_groupKey := GetTimeStamp()
+			_groupCoordinate := Coordinate{}
+			_groupCoordinate.Key = _groupKey
+			_groupCoordinate.X = coordinateX
+			coordinateY = coordinateY + GetDictH("group")["h"]
+			_groupCoordinate.Y = coordinateY
+			_groupCoordinate.W = coordinateW
+			_groupCoordinate.H = GetDictH("group")["h"]
+			_groupCoordinate.I = _groupKey
+			coordinate = append(coordinate, _groupCoordinate)
 			content := Content{
 				data,
 				groupName,
 				groupId,
 				"",
-				"",
+				_groupKey,
 				"",
 				"GROUP",
 				[]CruxAttr{},
@@ -94,7 +137,6 @@ func WriteYaml(result map[string]map[string][]string) {
 				key := GetTimeStamp()
 				attribute["key"] = key
 				data = append(data, attribute)
-				content.Data = data
 
 				_coordinate := Coordinate{}
 				_coordinate.Key = key
@@ -106,12 +148,15 @@ func WriteYaml(result map[string]map[string][]string) {
 				_coordinate.I = key
 				coordinate = append(coordinate, _coordinate)
 			}
+			content.Data = data
 			contents = append(contents, content)
-			model.Content = contents
-			model.Coordinate = coordinate
 		}
+		model.Content = contents
+		model.Coordinate = coordinate
+		model.CruxAttributes = cruxAttributes
+
 		result, err := yaml.Marshal(model)
-		if err = os.WriteFile(*r, result, 0777); err != nil {
+		if err = os.WriteFile(modelName+".yaml", result, 0777); err != nil {
 			panic(err)
 		}
 	}

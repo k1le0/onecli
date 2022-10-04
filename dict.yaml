@@ -1,3 +1,24 @@
+default:
+  attrName: 名称
+  attrID: ci_name
+  key: '22222'
+  type: INPUT
+  explain: ''
+  name: 单行文本
+  mustFill: true
+  isOperate: true
+  conditionMustFill: false
+  default: ''
+  inspection: ''
+  min: '1'
+  max: '60'
+  cruxAttribute: true
+  autoCollect: false
+  switchRules: false
+  cruxAttr:
+    - attrName: 名称
+      attrID: ci_name
+      key: '22222'
 input:
   attrName: ""
   attrID: ""
@@ -22,7 +43,7 @@ textares:
   attrName: ""
   attrID: ""
   key: ""
-  type: ""
+  type: TEXTARES
   explain: ""
   name: ""
   dataReport: false
