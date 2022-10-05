@@ -37,8 +37,6 @@ input:
   cruxAttribute: false
   autoCollect: false
   switchRules: false
-  cruxAttr: [
-  ]
 textares:
   attrName: ""
   attrID: ""
@@ -57,8 +55,6 @@ textares:
   autoCollect: false
   inspection: ''
   switchRules: false
-  cruxAttr: [
-  ]
 select:
   attrName: ""
   attrID: ""
@@ -83,8 +79,6 @@ select:
   cruxAttribute: false
   autoCollect: false
   dictionaries: '1111'
-  cruxAttr: [
-  ]
 radio:
   attrName: 单选
   attrID: dx
@@ -109,8 +103,6 @@ radio:
   cruxAttribute: false
   dictionaries: '1111'
   autoCollect: false
-  cruxAttr: [
-  ]
 checkbox:
   attrName: ""
   attrID: fx
@@ -135,8 +127,6 @@ checkbox:
   cruxAttribute: false
   dictionaries: '1111'
   autoCollect: false
-  cruxAttr: [
-  ]
 decimals:
   attrName: ""
   attrID: xs
@@ -155,8 +145,6 @@ decimals:
   max: ''
   cruxAttribute: false
   autoCollect: false
-  cruxAttr: [
-  ]
 integer:
   attrName:
   attrID: zs
@@ -174,8 +162,6 @@ integer:
   max: ''
   cruxAttribute: false
   autoCollect: false
-  cruxAttr: [
-  ]
 list:
   attrName: 表格
   attrID: bg
@@ -195,8 +181,6 @@ list:
       max: ''
       min: ''
       unit: ''
-  cruxAttr: [
-  ]
 time:
   attrName: 日期
   attrID: rq
@@ -212,8 +196,6 @@ time:
   cruxAttribute: false
   autoCollect: false
   dateFormat: YYYY-MM-DD HH:mm:ss
-  cruxAttr: [
-  ]
 personnel:
   attrName: 人员
   attrID: ry
@@ -228,8 +210,6 @@ personnel:
   items: [
   ]
   autoCollect: false
-  cruxAttr: [
-  ]
 image:
   attrName: 图片
   attrID: tp
@@ -242,8 +222,6 @@ image:
   isOperate: true
   conditionMustFill: false
   cruxAttribute: false
-  cruxAttr: [
-  ]
 accessory:
   attrName: 附件
   attrID: fj
@@ -256,8 +234,6 @@ accessory:
   isOperate: true
   conditionMustFill: false
   cruxAttribute: false
-  cruxAttr: [
-  ]
 boolean:
   attrName: 布尔
   attrID: buer
@@ -278,8 +254,6 @@ boolean:
   cruxAttribute: false
   autoCollect: false
   switchRules: false
-  cruxAttr: [
-  ]
 quote:
   attrName: 引用
   attrID: yy
@@ -295,8 +269,6 @@ quote:
     - '01'
   autoCollect: false
   cruxAttribute: false
-  cruxAttr: [
-  ]
 calculation:
   attrName: 计算
   attrID: js
@@ -308,8 +280,6 @@ calculation:
   mustFill: false
   isOperate: true
   ruleContent: [
-  ]
-  cruxAttr: [
   ]
 assetcode:
   attrName: Code码
@@ -341,5 +311,3 @@ assetcode:
       spaceChar: '-'
       order: 1
   serialNumber: 5
-  cruxAttr: [
-  ]

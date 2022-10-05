@@ -77,10 +77,10 @@ func WriteYaml(result map[string]map[string][]string) {
 		for gk, gv := range mv {
 			groupId, groupName, _ := SplitStr(gk)
 			var data []interface{}
+			_groupKey := GetTimeStamp()
 			if strings.Contains(groupName, "默认属性") {
 				_defaultAttribute := GetDict("default")
-				_key := GetTimeStamp()
-				_defaultAttribute["key"] = _key
+				_key := _defaultAttribute["key"]
 				_defaultAttribute["cruxAttr"] = CruxAttr{
 					"名称",
 					"ci_name",
@@ -90,8 +90,8 @@ func WriteYaml(result map[string]map[string][]string) {
 				_defaultCoordinate := Coordinate{}
 				_defaultCoordinate.Key = _key
 				_defaultCoordinate.X = coordinateX
-				coordinateY = coordinateY + GetDictH("default")["h"]
 				_defaultCoordinate.Y = coordinateY
+				coordinateY = coordinateY + GetDictH("group")["h"]
 				_defaultCoordinate.W = coordinateW
 				_defaultCoordinate.H = GetDictH("default")["h"]
 				_defaultCoordinate.I = _key
@@ -108,13 +108,13 @@ func WriteYaml(result map[string]map[string][]string) {
 					false,
 				}
 				cruxAttributes = append(cruxAttributes, _cruxAttribute)
+				_groupKey = "11111"
 			}
-			_groupKey := GetTimeStamp()
 			_groupCoordinate := Coordinate{}
 			_groupCoordinate.Key = _groupKey
 			_groupCoordinate.X = coordinateX
-			coordinateY = coordinateY + GetDictH("group")["h"]
 			_groupCoordinate.Y = coordinateY
+			coordinateY = coordinateY + GetDictH("group")["h"]
 			_groupCoordinate.W = coordinateW
 			_groupCoordinate.H = GetDictH("group")["h"]
 			_groupCoordinate.I = _groupKey
@@ -141,8 +141,8 @@ func WriteYaml(result map[string]map[string][]string) {
 				_coordinate := Coordinate{}
 				_coordinate.Key = key
 				_coordinate.X = coordinateX
-				coordinateY = coordinateY + GetDictH(attributeType)["h"]
 				_coordinate.Y = coordinateY
+				coordinateY = coordinateY + GetDictH(attributeType)["h"]
 				_coordinate.W = coordinateW
 				_coordinate.H = GetDictH(attributeType)["h"]
 				_coordinate.I = key
@@ -156,7 +156,7 @@ func WriteYaml(result map[string]map[string][]string) {
 		model.CruxAttributes = cruxAttributes
 
 		result, err := yaml.Marshal(model)
-		if err = os.WriteFile(modelName+".yaml", result, 0777); err != nil {
+		if err = os.WriteFile(modelName+".yml", result, 0777); err != nil {
 			panic(err)
 		}
 	}

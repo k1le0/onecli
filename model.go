@@ -15,24 +15,24 @@ type Model struct {
 }
 
 type Content struct {
-	Data         []interface{} `yaml:"data"`
-	GroupName    string        `yaml:"groupName"`
-	GroupId      string        `yaml:"groupId"`
-	GroupExplain string        `yaml:"groupExplain"`
-	Key          string        `yaml:"key"`
-	Group        string        `yaml:"group"`
-	Type         string        `yaml:"type"`
-	CruxAttr     []CruxAttr    `yaml:"cruxAttr"`
+	Data         []any      `yaml:"data"`
+	GroupName    string     `yaml:"groupName"`
+	GroupId      string     `yaml:"groupId"`
+	GroupExplain string     `yaml:"groupExplain"`
+	Key          string     `yaml:"key"`
+	Group        string     `yaml:"group"`
+	Type         string     `yaml:"type"`
+	CruxAttr     []CruxAttr `yaml:"cruxAttr"`
 }
 
 type Coordinate struct {
-	Key    string `yaml:"key"`
-	X      int8   `yaml:"x"`
-	Y      int8   `yaml:"y"`
-	W      int8   `yaml:"w"`
-	H      int8   `yaml:"h"`
-	Static bool   `yaml:"static"`
-	I      string `yaml:"i"`
+	Key    any  `yaml:"key"`
+	X      int8 `yaml:"x"`
+	Y      int8 `yaml:"y"`
+	W      int8 `yaml:"w"`
+	H      int8 `yaml:"h"`
+	Static bool `yaml:"static"`
+	I      any  `yaml:"i"`
 }
 
 type CruxAttribute struct {
@@ -42,13 +42,13 @@ type CruxAttribute struct {
 }
 
 type CruxAttr struct {
-	AttrName string `yaml:"attrName"`
-	AttrID   string `yaml:"attrID"`
-	Key      string `yaml:"key"`
+	AttrName string `default:"名称" yaml:"attrName"`
+	AttrID   string `default:"ci_name" yaml:"attrID"`
+	Key      any    `default:"22222" yaml:"key"`
 }
 
 type KeyWord struct {
 	AttrName string `yaml:"attrName"`
 	AttrID   string `yaml:"attrID"`
-	Key      string `yaml:"key"`
+	Key      any    `yaml:"key"`
 }
