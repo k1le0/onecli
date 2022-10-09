@@ -10,7 +10,7 @@ type Model struct {
 	Coordinate     []Coordinate    `yaml:"coordinate"`
 	CruxAttributes []CruxAttribute `yaml:"cruxAttributes"`
 	Category       int8            `yaml:"category"`
-	AssetType      string          `yaml:"assetType"`
+	AssetType      any             `yaml:"assetType"`
 	Type           string          `yaml:"type"`
 }
 
@@ -51,4 +51,43 @@ type KeyWord struct {
 	AttrName string `yaml:"attrName"`
 	AttrID   string `yaml:"attrID"`
 	Key      any    `yaml:"key"`
+}
+
+type Default struct {
+	AttrName          string
+	AttrID            string
+	Key               string
+	Type              string
+	Explain           string
+	Name              string
+	MustFill          string
+	IsOperate         string
+	ConditionMustFill string
+	Default           string
+	Inspection        string
+	Min               string
+	cruxAttribute     string
+	autoCollect       string
+	switchRules       string
+	cruxAttr          any
+}
+
+type Input struct {
+	AttrName          string
+	AttrID            string
+	Key               string
+	Type              string
+	Explain           string
+	Name              string
+	DataReport        string
+	MustFill          string
+	IsOperate         string
+	ConditionMustFill string
+	Default           string
+	Inspection        string
+	Min               string
+	Max               string
+	CruxAttribute     string
+	AutoCollect       string
+	SwitchRules       string
 }

@@ -15,28 +15,25 @@ const (
 )
 
 var (
-	e = flag.String("e", "target_update.xlsx", "target_update.xlsx")
+	e = flag.String("e", "target.xlsx", "target_update.xlsx")
 	d = flag.String("d", "dict.yaml", "dict.yaml")
 	h = flag.String("h", "dict_h.yaml", "dict_h.yaml")
 )
 
-func Version() string {
-	return VERSION
-}
-
-func GetTimeStamp() string {
-	_timestamp := time.Now().UnixNano()
-	return strconv.FormatInt(_timestamp, 10)
+func MakeTimeStamp(t time.Time) string {
+	return strconv.FormatInt(t.UnixNano(), 10)
 }
 
 func GetDict(str string) map[string]interface{} {
 	file := *d
 	yamlFile, err := os.ReadFile(file)
 	if err != nil {
+		fmt.Println(err.Error())
 		panic(err)
 	}
 	dict := make(map[string]map[string]interface{})
 	if err := yaml.Unmarshal(yamlFile, &dict); err != nil {
+		fmt.Println(err.Error())
 		panic(err)
 	}
 	return dict[strings.ToLower(str)]
@@ -46,10 +43,12 @@ func GetDictH(str string) map[string]int8 {
 	file := *h
 	yamlFile, err := os.ReadFile(file)
 	if err != nil {
+		fmt.Println(err.Error())
 		panic(err)
 	}
 	dict := make(map[string]map[string]int8)
 	if err := yaml.Unmarshal(yamlFile, &dict); err != nil {
+		fmt.Println(err.Error())
 		panic(err)
 	}
 	return dict[strings.ToLower(str)]
@@ -63,6 +62,8 @@ func SplitStr(str string) (string, string, string) {
 	return strings.SplitN(str, "_", 3)[0], strings.SplitN(str, "_", 3)[1], strings.SplitN(str, "_", 3)[2]
 }
 
-func PrintVersion() {
-	fmt.Printf("Onecli %v \n", Version())
+func AppendItem(model map[string]map[string][]string, group map[string][]string, attribute []string, row []string) {
+	attribute = append(attribute, AppendStr(row[4], row[5], row[6]))
+	group[AppendStr(row[2], row[3], "")] = attribute
+	model[AppendStr(row[0], row[1], "")] = group
 }
