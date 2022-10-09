@@ -14,7 +14,7 @@ func main() {
 
 	flag.Parse()
 
-	fmt.Printf("excel: %v, dict: %v, dict_h: %v\n", *e, *d, *h)
+	fmt.Printf("源Excel: %v, 属性字典: %v, 高度字典: %v\n", *e, *d, *h)
 
 	WriteYaml(ReadExcel())
 }
@@ -34,20 +34,26 @@ func ReadExcel() map[string]map[string][]string {
 	for number, row := range rows {
 		if 0 < number {
 			if 1 > len(result) || nil == result[AppendStr(row[0], row[1], "")] {
+				//如果模型不存在，初始化分组列表
 				var attribute []string
 				groupList := make(map[string][]string)
 				AppendItem(result, groupList, attribute, row)
 			} else if nil != result[AppendStr(row[0], row[1], "")] {
+				//如果模型已存在，获取分组列表
 				groupList := result[AppendStr(row[0], row[1], "")]
 				if nil == groupList[AppendStr(row[2], row[3], "")] {
+					//分组为空，初始化属性列表
 					var attribute []string
 					AppendItem(result, groupList, attribute, row)
 				} else if nil != groupList[AppendStr(row[2], row[3], "")] {
+					//分组不为空，添加属性
 					attribute := groupList[AppendStr(row[2], row[3], "")]
 					AppendItem(result, groupList, attribute, row)
 				} else {
+					// 不处理
 				}
 			} else {
+				// 不处理
 			}
 		}
 	}
@@ -63,24 +69,18 @@ func WriteYaml(result map[string]map[string][]string) {
 		var coordinate []Coordinate
 		var cruxAttributes []CruxAttribute
 		model := Model{
-			modelId,
-			modelName,
-			"icon-1",
-			"",
-			"",
-			contents,
-			coordinate,
-			cruxAttributes,
-			0,
-			nil,
-			"CMDB",
+			ModelId:        modelId,
+			ModelName:      modelName,
+			Content:        contents,
+			Coordinate:     coordinate,
+			CruxAttributes: cruxAttributes,
 		}
 		coordinateX := int8(0)
 		coordinateY := int8(0)
 		coordinateW := int8(2)
 		for gk, gv := range mv {
 			groupName, groupId, _ := SplitStr(gk)
-			var data []interface{}
+			var data []any
 			_groupKey := MakeTimeStamp(_time.Add(time.Duration(_count) * time.Minute))
 			_count++
 			if strings.Contains(groupName, "默认属性") {
@@ -109,27 +109,22 @@ func WriteYaml(result map[string]map[string][]string) {
 				_defaultCoordinate.I = _key
 				coordinate = append(coordinate, _defaultCoordinate)
 				_cruxAttribute := CruxAttribute{
-					true,
-					[]KeyWord{
+					KeyWords: []KeyWord{
 						{
 							"名称",
 							"ci_name",
 							_key,
 						},
 					},
-					false,
 				}
 				cruxAttributes = append(cruxAttributes, _cruxAttribute)
 			}
 			content := Content{
-				data,
-				groupName,
-				groupId,
-				"",
-				_groupKey,
-				"",
-				"GROUP",
-				[]CruxAttr{},
+				Data:      data,
+				GroupName: groupName,
+				GroupId:   groupId,
+				Key:       _groupKey,
+				CruxAttr:  []CruxAttr{},
 			}
 			for _, av := range gv {
 				attributeName, attributeId, attributeType := SplitStr(av)

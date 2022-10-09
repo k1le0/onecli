@@ -3,25 +3,25 @@ package main
 type Model struct {
 	ModelId        string          `yaml:"modelId"`
 	ModelName      string          `yaml:"modelName"`
-	IconPath       string          `yaml:"iconPath"`
-	Describe       string          `yaml:"describe"`
-	MonitorTypeId  string          `yaml:"monitorTypeId"`
+	IconPath       string          `default:"icon-1" yaml:"iconPath"`
+	Describe       string          `default:"" yaml:"describe"`
+	MonitorTypeId  string          `default:"" yaml:"monitorTypeId"`
 	Content        []Content       `yaml:"content"`
 	Coordinate     []Coordinate    `yaml:"coordinate"`
 	CruxAttributes []CruxAttribute `yaml:"cruxAttributes"`
-	Category       int8            `yaml:"category"`
-	AssetType      any             `yaml:"assetType"`
-	Type           string          `yaml:"type"`
+	Category       int8            `default:"0" yaml:"category"`
+	AssetType      any             `default:"null" yaml:"assetType"`
+	Type           string          `default:"CMDB" yaml:"type"`
 }
 
 type Content struct {
 	Data         []any      `yaml:"data"`
 	GroupName    string     `yaml:"groupName"`
 	GroupId      string     `yaml:"groupId"`
-	GroupExplain string     `yaml:"groupExplain"`
+	GroupExplain string     `default:"" yaml:"groupExplain"`
 	Key          string     `yaml:"key"`
-	Group        string     `yaml:"group"`
-	Type         string     `yaml:"type"`
+	Group        string     `default:"" yaml:"group"`
+	Type         string     `default:"GROUP" yaml:"type"`
 	CruxAttr     []CruxAttr `yaml:"cruxAttr"`
 }
 
@@ -36,9 +36,9 @@ type Coordinate struct {
 }
 
 type CruxAttribute struct {
-	MainAttr bool      `yaml:"mainAttr"`
+	MainAttr bool      `default:"true" yaml:"mainAttr"`
 	KeyWords []KeyWord `yaml:"keyWords"`
-	BuiltIn  bool      `yaml:"builtIn"`
+	BuiltIn  bool      `default:"false" yaml:"builtIn"`
 }
 
 type CruxAttr struct {
@@ -51,43 +51,4 @@ type KeyWord struct {
 	AttrName string `yaml:"attrName"`
 	AttrID   string `yaml:"attrID"`
 	Key      any    `yaml:"key"`
-}
-
-type Default struct {
-	AttrName          string
-	AttrID            string
-	Key               string
-	Type              string
-	Explain           string
-	Name              string
-	MustFill          string
-	IsOperate         string
-	ConditionMustFill string
-	Default           string
-	Inspection        string
-	Min               string
-	cruxAttribute     string
-	autoCollect       string
-	switchRules       string
-	cruxAttr          any
-}
-
-type Input struct {
-	AttrName          string
-	AttrID            string
-	Key               string
-	Type              string
-	Explain           string
-	Name              string
-	DataReport        string
-	MustFill          string
-	IsOperate         string
-	ConditionMustFill string
-	Default           string
-	Inspection        string
-	Min               string
-	Max               string
-	CruxAttribute     string
-	AutoCollect       string
-	SwitchRules       string
 }

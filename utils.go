@@ -10,12 +10,8 @@ import (
 	"time"
 )
 
-const (
-	VERSION = "0.0.1"
-)
-
 var (
-	e = flag.String("e", "target.xlsx", "target_update.xlsx")
+	e = flag.String("e", "target14.xlsx", "target_update.xlsx")
 	d = flag.String("d", "dict.yaml", "dict.yaml")
 	h = flag.String("h", "dict_h.yaml", "dict_h.yaml")
 )
@@ -24,14 +20,14 @@ func MakeTimeStamp(t time.Time) string {
 	return strconv.FormatInt(t.UnixNano(), 10)
 }
 
-func GetDict(str string) map[string]interface{} {
+func GetDict(str string) map[string]any {
 	file := *d
 	yamlFile, err := os.ReadFile(file)
 	if err != nil {
 		fmt.Println(err.Error())
 		panic(err)
 	}
-	dict := make(map[string]map[string]interface{})
+	dict := make(map[string]map[string]any)
 	if err := yaml.Unmarshal(yamlFile, &dict); err != nil {
 		fmt.Println(err.Error())
 		panic(err)
