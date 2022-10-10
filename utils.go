@@ -11,9 +11,11 @@ import (
 )
 
 var (
-	e = flag.String("e", "target14.xlsx", "target_update.xlsx")
-	d = flag.String("d", "dict.yaml", "dict.yaml")
-	h = flag.String("h", "dict_h.yaml", "dict_h.yaml")
+	e  = flag.String("e", "A2机房.xlsx", "target_update.xlsx")
+	sf = flag.String("sf", "sourcefile", "source path")
+	ef = flag.String("ef", "exportfile", "export path")
+	d  = flag.String("d", "dict.yaml", "dict.yaml")
+	h  = flag.String("h", "dict_h.yaml", "dict_h.yaml")
 )
 
 func MakeTimeStamp(t time.Time) string {
@@ -58,8 +60,36 @@ func SplitStr(str string) (string, string, string) {
 	return strings.SplitN(str, "|", 3)[0], strings.SplitN(str, "|", 3)[1], strings.SplitN(str, "|", 3)[2]
 }
 
-func AppendItem(model map[string]map[string][]string, group map[string][]string, attribute []string, row []string) {
+func AppendItem(model map[string]map[string][]string, group map[string][]string, attribute []string, row []string,
+	groupKey map[string][]string, attrKey map[string][]string) {
 	attribute = append(attribute, AppendStr(row[4], row[5], row[6]))
-	group[AppendStr(row[2], row[3], "")] = attribute
-	model[AppendStr(row[0], row[1], "")] = group
+	modelIndex := AppendStr(row[0], row[1], "")
+	groupIndex := AppendStr(row[2], row[3], "")
+	group[groupIndex] = attribute
+	model[modelIndex] = group
+	if !strings.Contains(strings.Join(groupKey[modelIndex], " "), groupIndex) {
+		groupKey[modelIndex] = append(groupKey[modelIndex], groupIndex)
+	}
+	attrKey[groupIndex] = append(attrKey[groupIndex], AppendStr(row[4], row[5], row[6]))
+}
+
+func IsDir(path string) bool {
+	s, err := os.Stat(path)
+	if err != nil {
+		return false
+	}
+	return s.IsDir()
+}
+
+func IsEmptyPath(path string) bool {
+	dir, _ := os.ReadDir(path)
+	return len(dir) == 0
+}
+
+func DirExit(path string) bool {
+	_, err := os.Stat(path)
+	if err == nil && IsDir(path) {
+		return true
+	}
+	return false
 }

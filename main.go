@@ -14,27 +14,47 @@ import (
 func main() {
 
 	flag.Parse()
+
 	absE, _ = filepath.Abs(*e)
+
+	absSf, _ = filepath.Abs(*sf)
+
+	absEf, _ = filepath.Abs(*ef)
 
 	absD, _ = filepath.Abs(*d)
 
 	absH, _ = filepath.Abs(*h)
 
-	fmt.Printf("源Excel: %v, 属性字典: %v, 高度字典: %v\n", absE, absD, absH)
+	fmt.Printf("源文件夹: %v, 目标文件夹: %v, 源Excel: %v, 属性字典: %v, 高度字典: %v\n", absSf, absEf, absE, absD, absH)
 
-	WriteYaml(ReadExcel())
+	DealData()
 }
 
 var absE string
+var absSf string
+var absEf string
 var absD string
 var absH string
 
-func ReadExcel() map[string]map[string][]string {
-	f, err := excelize.OpenFile(absE)
+func DealData() {
+	if IsDir(absSf) && !IsEmptyPath(absSf) {
+		dir, _ := os.ReadDir(absSf)
+		for _, item := range dir {
+			WriteYaml(ReadExcelFile(filepath.Join(absSf, item.Name())))
+		}
+	} else {
+		WriteYaml(ReadExcelFile(absE))
+	}
+}
+
+func ReadExcelFile(file string) (map[string][]string, map[string][]string, map[string]map[string][]string) {
+	f, err := excelize.OpenFile(file)
 	if err != nil {
 		fmt.Println(err.Error())
 		panic(err)
 	}
+	groupKey := make(map[string][]string)
+	attrKey := make(map[string][]string)
 	result := make(map[string]map[string][]string)
 	rows, err := f.GetRows("Template")
 	if err != nil {
@@ -47,18 +67,18 @@ func ReadExcel() map[string]map[string][]string {
 				//如果模型不存在，初始化分组列表
 				var attribute []string
 				groupList := make(map[string][]string)
-				AppendItem(result, groupList, attribute, row)
+				AppendItem(result, groupList, attribute, row, groupKey, attrKey)
 			} else if nil != result[AppendStr(row[0], row[1], "")] {
 				//如果模型已存在，获取分组列表
 				groupList := result[AppendStr(row[0], row[1], "")]
 				if nil == groupList[AppendStr(row[2], row[3], "")] {
 					//分组为空，初始化属性列表
 					var attribute []string
-					AppendItem(result, groupList, attribute, row)
+					AppendItem(result, groupList, attribute, row, groupKey, attrKey)
 				} else if nil != groupList[AppendStr(row[2], row[3], "")] {
 					//分组不为空，添加属性
 					attribute := groupList[AppendStr(row[2], row[3], "")]
-					AppendItem(result, groupList, attribute, row)
+					AppendItem(result, groupList, attribute, row, groupKey, attrKey)
 				} else {
 					// 不处理
 				}
@@ -67,13 +87,13 @@ func ReadExcel() map[string]map[string][]string {
 			}
 		}
 	}
-	return result
+	return groupKey, attrKey, result
 }
 
-func WriteYaml(result map[string]map[string][]string) {
+func WriteYaml(groupKey map[string][]string, attrKey map[string][]string, result map[string]map[string][]string) {
 	_time := time.Now()
 	_count := 1
-	for mk, mv := range result {
+	for mk, _ := range result {
 		modelName, modelId, _ := SplitStr(mk)
 		var contents []Content
 		var coordinate []Coordinate
@@ -94,8 +114,8 @@ func WriteYaml(result map[string]map[string][]string) {
 		coordinateX := int8(0)
 		coordinateY := int8(0)
 		coordinateW := int8(2)
-		for gk, gv := range mv {
-			groupName, groupId, _ := SplitStr(gk)
+		for _, value := range groupKey[mk] {
+			groupName, groupId, _ := SplitStr(value)
 			var data []any
 			_groupKey := MakeTimeStamp(_time.Add(time.Duration(_count) * time.Minute))
 			_count++
@@ -145,7 +165,7 @@ func WriteYaml(result map[string]map[string][]string) {
 				"GROUP",
 				[]CruxAttr{},
 			}
-			for _, av := range gv {
+			for _, av := range attrKey[value] {
 				attributeName, attributeId, attributeType := SplitStr(av)
 				attribute := GetDict(attributeType)
 				attribute["attrID"] = attributeId
@@ -172,8 +192,16 @@ func WriteYaml(result map[string]map[string][]string) {
 		model.Coordinate = coordinate
 		model.CruxAttributes = cruxAttributes
 
+		if !DirExit(absEf) {
+			err := os.Mkdir(absEf, os.ModePerm)
+			if err != nil {
+				fmt.Println(err.Error())
+				panic(err)
+			}
+		}
+
 		result, err := yaml.Marshal(model)
-		if err = os.WriteFile(modelName+".yml", result, 0777); err != nil {
+		if err = os.WriteFile(filepath.Join(absEf, modelName+".yml"), result, 0777); err != nil {
 			fmt.Println(err.Error())
 			panic(err)
 		}
