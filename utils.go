@@ -51,11 +51,11 @@ func GetDictH(str string) map[string]int8 {
 }
 
 func AppendStr(str1 string, str2 string, str3 string) string {
-	return str1 + "-" + str2 + "-" + str3
+	return str1 + "|" + str2 + "|" + str3
 }
 
 func SplitStr(str string) (string, string, string) {
-	return strings.SplitN(str, "-", 3)[0], strings.SplitN(str, "-", 3)[1], strings.SplitN(str, "-", 3)[2]
+	return strings.SplitN(str, "|", 3)[0], strings.SplitN(str, "|", 3)[1], strings.SplitN(str, "-", 3)[2]
 }
 
 func AppendItem(model map[string]map[string][]string, group map[string][]string, attribute []string, row []string) {
