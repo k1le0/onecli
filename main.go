@@ -6,6 +6,7 @@ import (
 	"github.com/xuri/excelize/v2"
 	"gopkg.in/yaml.v3"
 	"os"
+	"path/filepath"
 	"strings"
 	"time"
 )
@@ -13,14 +14,23 @@ import (
 func main() {
 
 	flag.Parse()
+	absE, _ = filepath.Abs(*e)
 
-	fmt.Printf("源Excel: %v, 属性字典: %v, 高度字典: %v\n", *e, *d, *h)
+	absD, _ = filepath.Abs(*d)
+
+	absH, _ = filepath.Abs(*h)
+
+	fmt.Printf("源Excel: %v, 属性字典: %v, 高度字典: %v\n", absE, absD, absH)
 
 	WriteYaml(ReadExcel())
 }
 
+var absE string
+var absD string
+var absH string
+
 func ReadExcel() map[string]map[string][]string {
-	f, err := excelize.OpenFile(*e)
+	f, err := excelize.OpenFile(absE)
 	if err != nil {
 		fmt.Println(err.Error())
 		panic(err)
@@ -69,11 +79,17 @@ func WriteYaml(result map[string]map[string][]string) {
 		var coordinate []Coordinate
 		var cruxAttributes []CruxAttribute
 		model := Model{
-			ModelId:        modelId,
-			ModelName:      modelName,
-			Content:        contents,
-			Coordinate:     coordinate,
-			CruxAttributes: cruxAttributes,
+			modelId,
+			modelName,
+			"icon-1",
+			"",
+			"",
+			contents,
+			coordinate,
+			cruxAttributes,
+			0,
+			nil,
+			"CMDB",
 		}
 		coordinateX := int8(0)
 		coordinateY := int8(0)
@@ -120,11 +136,14 @@ func WriteYaml(result map[string]map[string][]string) {
 				cruxAttributes = append(cruxAttributes, _cruxAttribute)
 			}
 			content := Content{
-				Data:      data,
-				GroupName: groupName,
-				GroupId:   groupId,
-				Key:       _groupKey,
-				CruxAttr:  []CruxAttr{},
+				data,
+				groupName,
+				groupId,
+				"",
+				_groupKey,
+				"",
+				"GROUP",
+				[]CruxAttr{},
 			}
 			for _, av := range gv {
 				attributeName, attributeId, attributeType := SplitStr(av)

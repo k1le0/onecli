@@ -21,7 +21,7 @@ func MakeTimeStamp(t time.Time) string {
 }
 
 func GetDict(str string) map[string]any {
-	file := *d
+	file := absD
 	yamlFile, err := os.ReadFile(file)
 	if err != nil {
 		fmt.Println(err.Error())
@@ -36,7 +36,7 @@ func GetDict(str string) map[string]any {
 }
 
 func GetDictH(str string) map[string]int8 {
-	file := *h
+	file := absH
 	yamlFile, err := os.ReadFile(file)
 	if err != nil {
 		fmt.Println(err.Error())
