@@ -1,0 +1,49 @@
+{
+  "properties": [
+    {
+      "attrID": "",
+      "attrName": "",
+      "attrGroupId": "",
+      "componentType": "INPUT",
+      "componentName": "单行文本",
+      "explain": "",
+      "attrInfo": {
+        "defaultValue": "",
+        "placeholder": "",
+        "fieldWidth": "WHOLE_LINE",
+        "optionType": [],
+        "checkType": [],
+        "conditionContent": {},
+        "validateRuleId": "",
+        "validateRule": "",
+        "range": []
+      },
+      "index": 0,
+      "properties": []
+    },
+    {
+      "attrID": "",
+      "attrName": "",
+      "attrGroupId": "",
+      "componentType": "TEXTAREA",
+      "componentName": "多行文本",
+      "explain": "",
+      "attrInfo": {
+        "defaultValue": "",
+        "placeholder": "",
+        "fieldWidth": "WHOLE_LINE",
+        "optionType": [],
+        "checkType": [],
+        "conditionContent": {},
+        "validateRuleId": "",
+        "validateRule": "",
+        "range": []
+      },
+      "index": 1,
+      "properties": []
+    },
+    {
+
+    }
+  ]
+}

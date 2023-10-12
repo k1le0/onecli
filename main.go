@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	v2 "github.com/k1le0/onecli/v2"
 	"github.com/xuri/excelize/v2"
 	"gopkg.in/yaml.v3"
 	"os"
@@ -204,6 +205,50 @@ func WriteYaml(groupKey map[string][]string, attrKey map[string][]string, result
 		if err = os.WriteFile(filepath.Join(absEf, modelName+".yml"), result, 0777); err != nil {
 			fmt.Println(err.Error())
 			panic(err)
+		}
+	}
+}
+
+func WriteYaml2(groupKey map[string][]string, attrKey map[string][]string, result map[string]map[string][]string) {
+	_time := time.Now()
+	_count := 1
+	for mk, _ := range result {
+		modelName, modelId, _ := SplitStr(mk)
+		var contents []v2.Content
+		model := v2.Model2{
+			ModelId:          modelId,
+			ModelName:        modelName,
+			IconPath:         "icon-1",
+			GroupId:          "",
+			GroupAllName:     "",
+			GroupAllId:       "",
+			AssetType:        nil,
+			ContainsAsset:    false,
+			Version:          13,
+			Content:          nil,
+			UniFieldsGroups:  nil,
+			SearchCapability: nil,
+		}
+		for _, value := range groupKey[mk] {
+			groupName, groupId, _ := SplitStr(value)
+			content := v2.Content{
+				AttrID:        groupId,
+				AttrName:      groupName,
+				ComponentType: "ATTRIBUTE_GROUP",
+				ComponentName: "属性分组",
+				Explain:       "",
+				AttrInfo:      nil,
+				Index:         0,
+				Properties:    nil,
+			}
+			if {
+
+			}
+			for _, av := range attrKey[value] {
+				attributeName, attributeId, attributeType := SplitStr(av)
+				attribute := GetDict(attributeType)
+
+			}
 		}
 	}
 }
