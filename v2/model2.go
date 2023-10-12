@@ -1,14 +1,14 @@
 package v2
 
 type Model2 struct {
-	Id               int64 `json:"id"`
-	ModelId          string
+	Id               string `json:"id"`
+	ModelId          string `json:"modelId"`
 	ModelName        string
 	IconPath         string
 	GroupId          string
 	GroupAllName     string
-	GroupAllId       string
-	AssetType        any
+	GroupAllId       string   `json:"groupAllId"`
+	AssetType        []string `json:"assetType"`
 	ContainsAsset    bool
 	Version          int8
 	Content          []Content

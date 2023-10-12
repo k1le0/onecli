@@ -211,11 +211,12 @@ func WriteYaml(groupKey map[string][]string, attrKey map[string][]string, result
 
 func WriteYaml2(groupKey map[string][]string, attrKey map[string][]string, result map[string]map[string][]string) {
 	_time := time.Now()
-	_count := 1
 	for mk, _ := range result {
 		modelName, modelId, _ := SplitStr(mk)
 		var contents []v2.Content
+		var uniFieldsGroups []v2.UniFieldsGroup
 		model := v2.Model2{
+			Id:               MakeTimeStamp(_time),
 			ModelId:          modelId,
 			ModelName:        modelName,
 			IconPath:         "icon-1",
@@ -225,12 +226,13 @@ func WriteYaml2(groupKey map[string][]string, attrKey map[string][]string, resul
 			AssetType:        nil,
 			ContainsAsset:    false,
 			Version:          13,
-			Content:          nil,
+			Content:          contents,
 			UniFieldsGroups:  nil,
 			SearchCapability: nil,
 		}
 		for _, value := range groupKey[mk] {
 			groupName, groupId, _ := SplitStr(value)
+			var properties []any
 			content := v2.Content{
 				AttrID:        groupId,
 				AttrName:      groupName,
@@ -239,16 +241,23 @@ func WriteYaml2(groupKey map[string][]string, attrKey map[string][]string, resul
 				Explain:       "",
 				AttrInfo:      nil,
 				Index:         0,
-				Properties:    nil,
+				Properties:    properties,
 			}
-			if {
+			// 基本信息 属性分组默认包含一个名称和文本
+			if strings.Contains(groupName, "基本信息") {
 
 			}
 			for _, av := range attrKey[value] {
 				attributeName, attributeId, attributeType := SplitStr(av)
 				attribute := GetDict(attributeType)
-
+				attribute["attrID"] = attributeId
+				attribute["attrName"] = attributeName
+				properties = append(properties, attribute)
 			}
+			content.Properties = properties
+
 		}
+		model.Content = contents
+		model.UniFieldsGroups = uniFieldsGroups
 	}
 }

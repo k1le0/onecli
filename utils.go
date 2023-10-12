@@ -11,9 +11,9 @@ import (
 )
 
 var (
-	e  = flag.String("e", "A2机房.xlsx", "target_update.xlsx")
-	sf = flag.String("sf", "sourcefile", "source path")
-	ef = flag.String("ef", "exportfile", "export path")
+	e  = flag.String("e", "C:\\Users\\kyleo\\GolandProjects\\onecli\\random\\target14.xlsx", "target_update.xlsx")
+	sf = flag.String("sf", "C:\\Users\\kyleo\\GolandProjects\\onecli\\random", "source path")
+	ef = flag.String("ef", "C:\\Users\\kyleo\\GolandProjects\\onecli", "export path")
 	d  = flag.String("d", "dict.json", "dict.json")
 	h  = flag.String("h", "dict_h.yaml", "dict_h.yaml")
 )
