@@ -13,7 +13,7 @@ type Model2 struct {
 	Version          int8             `json:"version"`
 	Content          []Content        `json:"content"`
 	UniFieldsGroups  []UniFieldsGroup `json:"uniFieldsGroups"`
-	SearchCapability []any            `json:"searchCapability"`
+	SearchCapability any              `json:"searchCapability"`
 }
 
 type UniFieldsGroup struct {

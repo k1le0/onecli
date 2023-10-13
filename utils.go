@@ -40,15 +40,14 @@ func GetDict(str string) map[string]any {
 }
 
 func GetDict2(str string) map[string]any {
-	//file := absD
-	file := "v2\\dict.json"
-	yamlFile, err := os.ReadFile(file)
+	file := absD
+	jsonFile, err := os.ReadFile(file)
 	if err != nil {
 		fmt.Println(err.Error())
 		panic(err)
 	}
 	dict := make(map[string]map[string]any)
-	if err := json.Unmarshal(yamlFile, &dict); err != nil {
+	if err := json.Unmarshal(jsonFile, &dict); err != nil {
 		fmt.Println(err.Error())
 		panic(err)
 	}
@@ -110,10 +109,6 @@ func DirExit(path string) bool {
 		return true
 	}
 	return false
-}
-
-func GetAttrInfo(typeNum string) v2.AttrInfo {
-	return v2.AttrInfo{}
 }
 
 func GetUniFieldsGroups() []v2.UniFieldsGroup {

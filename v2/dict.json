@@ -377,5 +377,652 @@
     },
     "index": 10,
     "properties": []
+  },
+  "searchcapability": {
+    "searchcapability": [
+      {
+        "componentType": "QUOTE",
+        "criteriaList": [
+          {
+            "operatorAlias": "包含",
+            "operator": "IN",
+            "expectBasicValueType": "STRING|LIST"
+          },
+          {
+            "operatorAlias": "不包含",
+            "operator": "NOTIN",
+            "expectBasicValueType": "STRING|LIST"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "E",
+            "expectBasicValueType": "STRING|LIST"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "IE",
+            "expectBasicValueType": "STRING|LIST"
+          },
+          {
+            "operatorAlias": "不等于",
+            "operator": "NE",
+            "expectBasicValueType": "STRING|LIST"
+          },
+          {
+            "operatorAlias": "为空",
+            "operator": "NULL",
+            "expectBasicValueType": null
+          },
+          {
+            "operatorAlias": "不为空",
+            "operator": "NOTNULL",
+            "expectBasicValueType": null
+          }
+        ],
+        "sortable": true,
+        "searchable": true
+      },
+      {
+        "componentType": "CHECKBOX",
+        "criteriaList": [
+          {
+            "operatorAlias": "包含",
+            "operator": "IN",
+            "expectBasicValueType": "STRING|LIST"
+          },
+          {
+            "operatorAlias": "不包含",
+            "operator": "NOTIN",
+            "expectBasicValueType": "STRING|LIST"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "E",
+            "expectBasicValueType": "STRING|LIST"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "IE",
+            "expectBasicValueType": "STRING|LIST"
+          },
+          {
+            "operatorAlias": "不等于",
+            "operator": "NE",
+            "expectBasicValueType": "STRING|LIST"
+          },
+          {
+            "operatorAlias": "为空",
+            "operator": "NULL",
+            "expectBasicValueType": null
+          },
+          {
+            "operatorAlias": "不为空",
+            "operator": "NOTNULL",
+            "expectBasicValueType": null
+          }
+        ],
+        "sortable": true,
+        "searchable": true
+      },
+      {
+        "componentType": "NUMBER",
+        "criteriaList": [
+          {
+            "operatorAlias": "等于",
+            "operator": "E",
+            "expectBasicValueType": "NUMBER"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "IE",
+            "expectBasicValueType": "NUMBER"
+          },
+          {
+            "operatorAlias": "不等于",
+            "operator": "NE",
+            "expectBasicValueType": "NUMBER"
+          },
+          {
+            "operatorAlias": "大于",
+            "operator": "GT",
+            "expectBasicValueType": "NUMBER"
+          },
+          {
+            "operatorAlias": "小于",
+            "operator": "LT",
+            "expectBasicValueType": "NUMBER"
+          },
+          {
+            "operatorAlias": "大于等于",
+            "operator": "GTE",
+            "expectBasicValueType": "NUMBER"
+          },
+          {
+            "operatorAlias": "小于等于",
+            "operator": "LTE",
+            "expectBasicValueType": "NUMBER"
+          },
+          {
+            "operatorAlias": "为空",
+            "operator": "NULL",
+            "expectBasicValueType": null
+          },
+          {
+            "operatorAlias": "不为空",
+            "operator": "NOTNULL",
+            "expectBasicValueType": null
+          }
+        ],
+        "sortable": true,
+        "searchable": true
+      },
+      {
+        "componentType": "INPUT",
+        "criteriaList": [
+          {
+            "operatorAlias": "包含",
+            "operator": "LIKE",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "不包含",
+            "operator": "NOTLIKE",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "E",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "IE",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "不等于",
+            "operator": "NE",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "为空",
+            "operator": "NULL",
+            "expectBasicValueType": null
+          },
+          {
+            "operatorAlias": "不为空",
+            "operator": "NOTNULL",
+            "expectBasicValueType": null
+          }
+        ],
+        "sortable": true,
+        "searchable": true
+      },
+      {
+        "componentType": "TEXTAREA",
+        "criteriaList": [
+          {
+            "operatorAlias": "包含",
+            "operator": "LIKE",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "不包含",
+            "operator": "NOTLIKE",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "E",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "IE",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "不等于",
+            "operator": "NE",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "为空",
+            "operator": "NULL",
+            "expectBasicValueType": null
+          },
+          {
+            "operatorAlias": "不为空",
+            "operator": "NOTNULL",
+            "expectBasicValueType": null
+          }
+        ],
+        "sortable": true,
+        "searchable": true
+      },
+      {
+        "componentType": "USER_GROUP",
+        "criteriaList": [
+          {
+            "operatorAlias": "包含",
+            "operator": "IN",
+            "expectBasicValueType": "LONG|LIST"
+          },
+          {
+            "operatorAlias": "不包含",
+            "operator": "NOTIN",
+            "expectBasicValueType": "LONG|LIST"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "E",
+            "expectBasicValueType": "LONG|LIST"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "IE",
+            "expectBasicValueType": "LONG|LIST"
+          },
+          {
+            "operatorAlias": "不等于",
+            "operator": "NE",
+            "expectBasicValueType": "LONG|LIST"
+          },
+          {
+            "operatorAlias": "为空",
+            "operator": "NULL",
+            "expectBasicValueType": null
+          },
+          {
+            "operatorAlias": "不为空",
+            "operator": "NOTNULL",
+            "expectBasicValueType": null
+          }
+        ],
+        "sortable": true,
+        "searchable": true
+      },
+      {
+        "componentType": "USER",
+        "criteriaList": [
+          {
+            "operatorAlias": "包含",
+            "operator": "IN",
+            "expectBasicValueType": "LONG|LIST"
+          },
+          {
+            "operatorAlias": "不包含",
+            "operator": "NOTIN",
+            "expectBasicValueType": "LONG|LIST"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "E",
+            "expectBasicValueType": "LONG|LIST"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "IE",
+            "expectBasicValueType": "LONG|LIST"
+          },
+          {
+            "operatorAlias": "不等于",
+            "operator": "NE",
+            "expectBasicValueType": "LONG|LIST"
+          },
+          {
+            "operatorAlias": "为空",
+            "operator": "NULL",
+            "expectBasicValueType": null
+          },
+          {
+            "operatorAlias": "不为空",
+            "operator": "NOTNULL",
+            "expectBasicValueType": null
+          }
+        ],
+        "sortable": true,
+        "searchable": true
+      },
+      {
+        "componentType": "SELECT",
+        "criteriaList": [
+          {
+            "operatorAlias": "包含",
+            "operator": "IN",
+            "expectBasicValueType": "STRING|LIST"
+          },
+          {
+            "operatorAlias": "不包含",
+            "operator": "NOTIN",
+            "expectBasicValueType": "STRING|LIST"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "E",
+            "expectBasicValueType": "STRING|LIST"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "IE",
+            "expectBasicValueType": "STRING|LIST"
+          },
+          {
+            "operatorAlias": "不等于",
+            "operator": "NE",
+            "expectBasicValueType": "STRING|LIST"
+          },
+          {
+            "operatorAlias": "为空",
+            "operator": "NULL",
+            "expectBasicValueType": null
+          },
+          {
+            "operatorAlias": "不为空",
+            "operator": "NOTNULL",
+            "expectBasicValueType": null
+          }
+        ],
+        "sortable": true,
+        "searchable": true
+      },
+      {
+        "componentType": "DATE",
+        "criteriaList": [
+          {
+            "operatorAlias": "等于",
+            "operator": "E",
+            "expectBasicValueType": "LONG"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "IE",
+            "expectBasicValueType": "LONG"
+          },
+          {
+            "operatorAlias": "不等于",
+            "operator": "NE",
+            "expectBasicValueType": "LONG"
+          },
+          {
+            "operatorAlias": "大于",
+            "operator": "GT",
+            "expectBasicValueType": "LONG"
+          },
+          {
+            "operatorAlias": "小于",
+            "operator": "LT",
+            "expectBasicValueType": "LONG"
+          },
+          {
+            "operatorAlias": "大于等于",
+            "operator": "GTE",
+            "expectBasicValueType": "LONG"
+          },
+          {
+            "operatorAlias": "小于等于",
+            "operator": "LTE",
+            "expectBasicValueType": "LONG"
+          },
+          {
+            "operatorAlias": "为空",
+            "operator": "NULL",
+            "expectBasicValueType": null
+          },
+          {
+            "operatorAlias": "不为空",
+            "operator": "NOTNULL",
+            "expectBasicValueType": null
+          }
+        ],
+        "sortable": true,
+        "searchable": true
+      },
+      {
+        "componentType": "UID",
+        "criteriaList": [
+          {
+            "operatorAlias": "包含",
+            "operator": "LIKE",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "不包含",
+            "operator": "NOTLIKE",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "E",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "IE",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "不等于",
+            "operator": "NE",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "为空",
+            "operator": "NULL",
+            "expectBasicValueType": null
+          },
+          {
+            "operatorAlias": "不为空",
+            "operator": "NOTNULL",
+            "expectBasicValueType": null
+          }
+        ],
+        "sortable": true,
+        "searchable": true
+      },
+      {
+        "componentType": "AUTO_CALCULATE",
+        "criteriaList": [
+          {
+            "operatorAlias": "等于",
+            "operator": "E",
+            "expectBasicValueType": "NUMBER"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "IE",
+            "expectBasicValueType": "NUMBER"
+          },
+          {
+            "operatorAlias": "不等于",
+            "operator": "NE",
+            "expectBasicValueType": "NUMBER"
+          },
+          {
+            "operatorAlias": "大于",
+            "operator": "GT",
+            "expectBasicValueType": "NUMBER"
+          },
+          {
+            "operatorAlias": "小于",
+            "operator": "LT",
+            "expectBasicValueType": "NUMBER"
+          },
+          {
+            "operatorAlias": "大于等于",
+            "operator": "GTE",
+            "expectBasicValueType": "NUMBER"
+          },
+          {
+            "operatorAlias": "小于等于",
+            "operator": "LTE",
+            "expectBasicValueType": "NUMBER"
+          },
+          {
+            "operatorAlias": "为空",
+            "operator": "NULL",
+            "expectBasicValueType": null
+          },
+          {
+            "operatorAlias": "不为空",
+            "operator": "NOTNULL",
+            "expectBasicValueType": null
+          }
+        ],
+        "sortable": true,
+        "searchable": true
+      },
+      {
+        "componentType": "IMAGE",
+        "criteriaList": null,
+        "sortable": false,
+        "searchable": false
+      },
+      {
+        "componentType": "RADIO",
+        "criteriaList": [
+          {
+            "operatorAlias": "包含",
+            "operator": "IN",
+            "expectBasicValueType": "STRING|LIST"
+          },
+          {
+            "operatorAlias": "不包含",
+            "operator": "NOTIN",
+            "expectBasicValueType": "STRING|LIST"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "E",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "IE",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "不等于",
+            "operator": "NE",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "为空",
+            "operator": "NULL",
+            "expectBasicValueType": null
+          },
+          {
+            "operatorAlias": "不为空",
+            "operator": "NOTNULL",
+            "expectBasicValueType": null
+          }
+        ],
+        "sortable": true,
+        "searchable": true
+      },
+      {
+        "componentType": "SWITCH",
+        "criteriaList": [
+          {
+            "operatorAlias": "等于",
+            "operator": "E",
+            "expectBasicValueType": "BOOLEAN"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "IE",
+            "expectBasicValueType": "BOOLEAN"
+          },
+          {
+            "operatorAlias": "不等于",
+            "operator": "NE",
+            "expectBasicValueType": "BOOLEAN"
+          }
+        ],
+        "sortable": true,
+        "searchable": true
+      },
+      {
+        "componentType": "FILE",
+        "criteriaList": null,
+        "sortable": false,
+        "searchable": false
+      },
+      {
+        "componentType": "INPUT",
+        "criteriaList": [
+          {
+            "operatorAlias": "包含",
+            "operator": "LIKE",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "不包含",
+            "operator": "NOTLIKE",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "E",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "等于",
+            "operator": "IE",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "不等于",
+            "operator": "NE",
+            "expectBasicValueType": "STRING"
+          },
+          {
+            "operatorAlias": "为空",
+            "operator": "NULL",
+            "expectBasicValueType": null
+          },
+          {
+            "operatorAlias": "不为空",
+            "operator": "NOTNULL",
+            "expectBasicValueType": null
+          },
+          {
+            "operatorAlias": "包含",
+            "operator": "IN",
+            "expectBasicValueType": "STRING|LIST"
+          },
+          {
+            "operatorAlias": "包含",
+            "operator": "NOTIN",
+            "expectBasicValueType": "STRING|LIST"
+          }
+        ],
+        "sortable": true,
+        "searchable": true
+      },
+      {
+        "componentType": "NUMBER_RANGE",
+        "criteriaList": null,
+        "sortable": false,
+        "searchable": false
+      },
+      {
+        "componentType": "TABLE",
+        "criteriaList": [
+          {
+            "operatorAlias": "包含",
+            "operator": "IN",
+            "expectBasicValueType": "LIST"
+          },
+          {
+            "operatorAlias": "不包含",
+            "operator": "NOTIN",
+            "expectBasicValueType": "LIST"
+          }
+        ],
+        "sortable": false,
+        "searchable": false
+      }
+    ]
   }
 }

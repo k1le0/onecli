@@ -229,6 +229,7 @@ func WriteJSON(groupKey map[string][]string, attrKey map[string][]string, result
 		_count := int8(0)
 		// 初始化唯一性约束
 		uniFieldsGroups := GetUniFieldsGroups()
+		searchCapability := GetDict2("searchCapability")
 		// model对象
 		model := v2.Model2{
 			Id:        MakeTimeStamp(_time),
@@ -244,7 +245,7 @@ func WriteJSON(groupKey map[string][]string, attrKey map[string][]string, result
 			Version:          25,
 			Content:          contents,
 			UniFieldsGroups:  uniFieldsGroups,
-			SearchCapability: []any{},
+			SearchCapability: searchCapability["searchcapability"],
 		}
 		for _, value := range groupKey[mk] {
 			groupName, groupId, _ := SplitStr(value)
@@ -287,7 +288,6 @@ func WriteJSON(groupKey map[string][]string, attrKey map[string][]string, result
 		model.Content = contents
 		model.UniFieldsGroups = uniFieldsGroups
 
-		// fmt.Println(model)
 		if !DirExit(absEf) {
 			err := os.Mkdir(absEf, os.ModePerm)
 			if err != nil {
