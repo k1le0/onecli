@@ -1,8 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"fmt"
+	v2 "github.com/k1le0/onecli/v2"
 	"gopkg.in/yaml.v3"
 	"os"
 	"strconv"
@@ -11,10 +13,10 @@ import (
 )
 
 var (
-	e  = flag.String("e", "C:\\Users\\kyleo\\GolandProjects\\onecli\\random\\target14.xlsx", "target_update.xlsx")
-	sf = flag.String("sf", "C:\\Users\\kyleo\\GolandProjects\\onecli\\random", "source path")
-	ef = flag.String("ef", "C:\\Users\\kyleo\\GolandProjects\\onecli", "export path")
-	d  = flag.String("d", "dict.json", "dict.json")
+	e  = flag.String("e", "random\\target13.xlsx", "target_update.xlsx")
+	sf = flag.String("sf", "random\\", "source path")
+	ef = flag.String("ef", "", "export path")
+	d  = flag.String("d", "v2\\dict.json", "dict2.json")
 	h  = flag.String("h", "dict_h.yaml", "dict_h.yaml")
 )
 
@@ -31,6 +33,22 @@ func GetDict(str string) map[string]any {
 	}
 	dict := make(map[string]map[string]any)
 	if err := yaml.Unmarshal(yamlFile, &dict); err != nil {
+		fmt.Println(err.Error())
+		panic(err)
+	}
+	return dict[strings.ToLower(str)]
+}
+
+func GetDict2(str string) map[string]any {
+	//file := absD
+	file := "v2\\dict.json"
+	yamlFile, err := os.ReadFile(file)
+	if err != nil {
+		fmt.Println(err.Error())
+		panic(err)
+	}
+	dict := make(map[string]map[string]any)
+	if err := json.Unmarshal(yamlFile, &dict); err != nil {
 		fmt.Println(err.Error())
 		panic(err)
 	}
@@ -92,4 +110,21 @@ func DirExit(path string) bool {
 		return true
 	}
 	return false
+}
+
+func GetAttrInfo(typeNum string) v2.AttrInfo {
+	return v2.AttrInfo{}
+}
+
+func GetUniFieldsGroups() []v2.UniFieldsGroup {
+	uniFieldsGroup := v2.UniFieldsGroup{
+		Fields: []string{
+			"ciName",
+		},
+		CanBeEmpty:    false,
+		SupportImport: true,
+	}
+	return []v2.UniFieldsGroup{
+		uniFieldsGroup,
+	}
 }

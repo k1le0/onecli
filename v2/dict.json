@@ -1,49 +1,381 @@
 {
-  "properties": [
-    {
-      "attrID": "",
-      "attrName": "",
-      "attrGroupId": "",
-      "componentType": "INPUT",
-      "componentName": "单行文本",
-      "explain": "",
-      "attrInfo": {
-        "defaultValue": "",
-        "placeholder": "",
-        "fieldWidth": "WHOLE_LINE",
-        "optionType": [],
-        "checkType": [],
-        "conditionContent": {},
-        "validateRuleId": "",
-        "validateRule": "",
-        "range": []
-      },
-      "index": 0,
-      "properties": []
+  "default": {
+    "attrID": "ciName",
+    "attrName": "名称",
+    "attrGroupId": "BasicInfo",
+    "componentType": "INPUT",
+    "componentName": "单行文本",
+    "explain": "3",
+    "attrInfo": {
+      "defaultValue": "1",
+      "placeholder": "2",
+      "fieldWidth": "WHOLE_LINE",
+      "optionType": [
+        "readonly"
+      ],
+      "checkType": [
+        "required"
+      ],
+      "validateRuleId": "",
+      "validateRule": "",
+      "range": [
+        0,
+        1000
+      ]
     },
-    {
-      "attrID": "",
-      "attrName": "",
-      "attrGroupId": "",
-      "componentType": "TEXTAREA",
-      "componentName": "多行文本",
-      "explain": "",
-      "attrInfo": {
-        "defaultValue": "",
-        "placeholder": "",
-        "fieldWidth": "WHOLE_LINE",
-        "optionType": [],
-        "checkType": [],
-        "conditionContent": {},
-        "validateRuleId": "",
-        "validateRule": "",
-        "range": []
-      },
-      "index": 1,
-      "properties": []
+    "index": 0,
+    "properties": []
+  },
+  "input": {
+    "attrID": "INPUT_7d3a1",
+    "attrName": "单行文本",
+    "attrGroupId": "attrubute1",
+    "componentType": "INPUT",
+    "componentName": "单行文本",
+    "explain": "3",
+    "attrInfo": {
+      "defaultValue": "1",
+      "placeholder": "2",
+      "fieldWidth": "WHOLE_LINE",
+      "optionType": [
+        "readonly"
+      ],
+      "checkType": [
+        "required"
+      ],
+      "conditionContent": {},
+      "validateRuleId": "",
+      "validateRule": "",
+      "range": [
+        1,
+        1000
+      ]
     },
-    {
-
-    }
-  ]
+    "index": 0,
+    "properties": []
+  },
+  "textarea": {
+    "attrID": "TEXTAREA_05346",
+    "attrName": "多行文本",
+    "attrGroupId": "attrubute1",
+    "componentType": "TEXTAREA",
+    "componentName": "多行文本",
+    "explain": "3",
+    "attrInfo": {
+      "defaultValue": "1",
+      "placeholder": "2",
+      "fieldWidth": "WHOLE_LINE",
+      "optionType": [
+        "readonly"
+      ],
+      "checkType": [
+        "required"
+      ],
+      "conditionContent": {},
+      "validateRuleId": "",
+      "validateRule": "",
+      "range": [
+        1,
+        1000
+      ]
+    },
+    "index": 1,
+    "properties": []
+  },
+  "select": {
+    "attrID": "SELECT_6b289",
+    "attrName": "下拉选择",
+    "attrGroupId": "attrubute1",
+    "componentType": "SELECT",
+    "componentName": "下拉选择",
+    "explain": "2",
+    "attrInfo": {
+      "defaultValue": [
+        "Linux"
+      ],
+      "placeholder": "1",
+      "fieldWidth": "WHOLE_LINE",
+      "optionType": [
+        "readonly"
+      ],
+      "checkType": [
+        "required"
+      ],
+      "conditionContent": {},
+      "validateRuleId": "",
+      "validateRule": "",
+      "range": [],
+      "dictionaryName": "操作系统类型",
+      "dictionaryId": "OsType",
+      "enumList": [
+        {
+          "dictId": "OsType",
+          "level": 1,
+          "itemCode": "Linux",
+          "itemName": "Linux",
+          "itemColour": "#fff",
+          "children": null
+        },
+        {
+          "dictId": "OsType",
+          "level": 1,
+          "itemCode": "MacOS",
+          "itemName": "MacOS",
+          "itemColour": "#fff",
+          "children": null
+        }
+      ]
+    },
+    "index": 2,
+    "properties": []
+  },
+  "radio": {
+    "attrID": "RADIO_7cb62",
+    "attrName": "单选",
+    "attrGroupId": "attrubute1",
+    "componentType": "RADIO",
+    "componentName": "单选",
+    "explain": "1",
+    "attrInfo": {
+      "defaultValue": "Linux",
+      "placeholder": "",
+      "fieldWidth": "WHOLE_LINE",
+      "optionType": [
+        "readonly"
+      ],
+      "checkType": [
+        "required"
+      ],
+      "conditionContent": {},
+      "validateRuleId": "",
+      "validateRule": "",
+      "range": [],
+      "dictionaryName": "操作系统类型",
+      "dictionaryId": "OsType",
+      "enumList": [
+        {
+          "dictId": "OsType",
+          "level": 1,
+          "itemCode": "Linux",
+          "itemName": "Linux",
+          "itemColour": "#fff",
+          "children": null
+        },
+        {
+          "dictId": "OsType",
+          "level": 1,
+          "itemCode": "MacOS",
+          "itemName": "MacOS",
+          "itemColour": "#fff",
+          "children": null
+        }
+      ]
+    },
+    "index": 3,
+    "properties": []
+  },
+  "checkbox": {
+    "attrID": "CHECKBOX_05f98",
+    "attrName": "多选",
+    "attrGroupId": "attrubute1",
+    "componentType": "CHECKBOX",
+    "componentName": "多选",
+    "explain": "1",
+    "attrInfo": {
+      "defaultValue": [
+        "Linux"
+      ],
+      "placeholder": "",
+      "fieldWidth": "WHOLE_LINE",
+      "optionType": [
+        "readonly"
+      ],
+      "checkType": [
+        "required"
+      ],
+      "conditionContent": {},
+      "validateRuleId": "",
+      "validateRule": "",
+      "range": [],
+      "dictionaryName": "操作系统类型",
+      "dictionaryId": "OsType",
+      "enumList": [
+        {
+          "dictId": "OsType",
+          "level": 1,
+          "itemCode": "Linux",
+          "itemName": "Linux",
+          "itemColour": "#fff",
+          "children": null
+        },
+        {
+          "dictId": "OsType",
+          "level": 1,
+          "itemCode": "MacOS",
+          "itemName": "MacOS",
+          "itemColour": "#fff",
+          "children": null
+        }
+      ]
+    },
+    "index": 4,
+    "properties": []
+  },
+  "switch": {
+    "attrID": "SWITCH_27847",
+    "attrName": "开关",
+    "attrGroupId": "attrubute1",
+    "componentType": "SWITCH",
+    "componentName": "开关",
+    "explain": "1",
+    "attrInfo": {
+      "defaultValue": true,
+      "placeholder": "",
+      "fieldWidth": "WHOLE_LINE",
+      "optionType": [
+        "readonly"
+      ],
+      "checkType": [],
+      "conditionContent": {},
+      "onValue": "是",
+      "offValue": "否",
+      "dictionaryId": ""
+    },
+    "index": 5,
+    "properties": []
+  },
+  "number": {
+    "attrID": "NUMBER_86766",
+    "attrName": "数字",
+    "attrGroupId": "attrubute1",
+    "componentType": "NUMBER",
+    "componentName": "数字",
+    "explain": "4",
+    "attrInfo": {
+      "defaultValue": 2,
+      "placeholder": "3",
+      "fieldWidth": "WHOLE_LINE",
+      "optionType": [
+        "readonly"
+      ],
+      "checkType": [
+        "required"
+      ],
+      "conditionContent": {},
+      "validateRuleId": "",
+      "validateRule": "",
+      "range": [
+        1,
+        1000
+      ],
+      "unit": "1"
+    },
+    "index": 6,
+    "properties": []
+  },
+  "date": {
+    "attrID": "DATE_eba92",
+    "attrName": "日期",
+    "attrGroupId": "attrubute1",
+    "componentType": "DATE",
+    "componentName": "日期",
+    "explain": "2",
+    "attrInfo": {
+      "defaultValue": 1697178763831,
+      "placeholder": "1",
+      "fieldWidth": "WHOLE_LINE",
+      "optionType": [
+        "readonly"
+      ],
+      "checkType": [
+        "required"
+      ],
+      "conditionContent": {},
+      "validateRuleId": "",
+      "validateRule": "",
+      "dateFormat": "yyyy-MM-dd"
+    },
+    "index": 7,
+    "properties": []
+  },
+  "quote": {
+    "attrID": "QUOTE_2beb8",
+    "attrName": "引用",
+    "attrGroupId": "attrubute1",
+    "componentType": "QUOTE",
+    "componentName": "引用",
+    "explain": "1",
+    "attrInfo": {
+      "placeholder": "",
+      "fieldWidth": "WHOLE_LINE",
+      "optionType": [
+        "readonly"
+      ],
+      "checkType": [
+        "required"
+      ],
+      "conditionContent": {},
+      "validateRuleId": "",
+      "validateRule": "",
+      "reference": [
+        {
+          "targetModelId": "Redis",
+          "targetModelName": "Redis",
+          "targetModelIconPath": "icon-1",
+          "hasBind": true,
+          "relationId": 120823103414529,
+          "relationship": "调用",
+          "inverseRelationship": "被调用",
+          "reverse": false
+        }
+      ],
+      "relationCascade": false
+    },
+    "index": 8,
+    "properties": []
+  },
+  "image": {
+    "attrID": "IMAGE_2dacb",
+    "attrName": "图片",
+    "attrGroupId": "attrubute1",
+    "componentType": "IMAGE",
+    "componentName": "图片",
+    "explain": "1",
+    "attrInfo": {
+      "fieldWidth": "WHOLE_LINE",
+      "optionType": [
+        "readonly"
+      ],
+      "checkType": [
+        "required"
+      ],
+      "conditionContent": {},
+      "validateRuleId": "",
+      "validateRule": ""
+    },
+    "index": 9,
+    "properties": []
+  },
+  "file": {
+    "attrID": "FILE_c3c28",
+    "attrName": "附件",
+    "attrGroupId": "attrubute1",
+    "componentType": "FILE",
+    "componentName": "附件",
+    "explain": "1",
+    "attrInfo": {
+      "fieldWidth": "WHOLE_LINE",
+      "optionType": [
+        "readonly"
+      ],
+      "checkType": [
+        "required"
+      ],
+      "conditionContent": {},
+      "validateRuleId": "",
+      "validateRule": ""
+    },
+    "index": 10,
+    "properties": []
+  }
 }

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"fmt"
 	v2 "github.com/k1le0/onecli/v2"
@@ -28,7 +29,7 @@ func main() {
 
 	fmt.Printf("源文件夹: %v, 目标文件夹: %v, 源Excel: %v, 属性字典: %v, 高度字典: %v\n", absSf, absEf, absE, absD, absH)
 
-	DealData()
+	DealData2()
 }
 
 var absE string
@@ -45,6 +46,17 @@ func DealData() {
 		}
 	} else {
 		WriteYaml(ReadExcelFile(absE))
+	}
+}
+
+func DealData2() {
+	if IsDir(absSf) && !IsEmptyPath(absSf) {
+		dir, _ := os.ReadDir(absSf)
+		for _, item := range dir {
+			WriteJSON(ReadExcelFile(filepath.Join(absSf, item.Name())))
+		}
+	} else {
+		WriteJSON(ReadExcelFile(absE))
 	}
 }
 
@@ -209,55 +221,85 @@ func WriteYaml(groupKey map[string][]string, attrKey map[string][]string, result
 	}
 }
 
-func WriteYaml2(groupKey map[string][]string, attrKey map[string][]string, result map[string]map[string][]string) {
+func WriteJSON(groupKey map[string][]string, attrKey map[string][]string, result map[string]map[string][]string) {
 	_time := time.Now()
 	for mk, _ := range result {
 		modelName, modelId, _ := SplitStr(mk)
 		var contents []v2.Content
-		var uniFieldsGroups []v2.UniFieldsGroup
+		_count := int8(0)
+		// 初始化唯一性约束
+		uniFieldsGroups := GetUniFieldsGroups()
+		// model对象
 		model := v2.Model2{
-			Id:               MakeTimeStamp(_time),
-			ModelId:          modelId,
-			ModelName:        modelName,
-			IconPath:         "icon-1",
-			GroupId:          "",
-			GroupAllName:     "",
-			GroupAllId:       "",
-			AssetType:        nil,
+			Id:        MakeTimeStamp(_time),
+			ModelId:   modelId,
+			ModelName: modelName,
+			IconPath:  "icon-1",
+			// todo 和ModelId唯一性
+			GroupId:          "ITDevice",
+			GroupAllName:     "IT设备",
+			GroupAllId:       "ITDevice",
+			AssetType:        []string{},
 			ContainsAsset:    false,
-			Version:          13,
+			Version:          25,
 			Content:          contents,
-			UniFieldsGroups:  nil,
-			SearchCapability: nil,
+			UniFieldsGroups:  uniFieldsGroups,
+			SearchCapability: []any{},
 		}
 		for _, value := range groupKey[mk] {
 			groupName, groupId, _ := SplitStr(value)
 			var properties []any
+			// 属性分组
+			attrInfo := v2.AttrInfo{
+				FieldWidth:       "WHOLE_LINE",
+				OptionType:       []string{},
+				CheckType:        []string{},
+				ConditionContent: nil,
+				Range:            []int8{},
+				EnumList:         []v2.EnumItem{},
+			}
 			content := v2.Content{
 				AttrID:        groupId,
 				AttrName:      groupName,
 				ComponentType: "ATTRIBUTE_GROUP",
 				ComponentName: "属性分组",
 				Explain:       "",
-				AttrInfo:      nil,
-				Index:         0,
+				AttrInfo:      attrInfo,
+				Index:         _count,
 				Properties:    properties,
 			}
-			// 基本信息 属性分组默认包含一个名称和文本
-			if strings.Contains(groupName, "基本信息") {
-
-			}
+			// 索引加1
+			_count = _count + 1
+			_index := 0
 			for _, av := range attrKey[value] {
 				attributeName, attributeId, attributeType := SplitStr(av)
-				attribute := GetDict(attributeType)
+				attribute := GetDict2(attributeType)
 				attribute["attrID"] = attributeId
 				attribute["attrName"] = attributeName
+				attribute["attrGroupId"] = groupId
+				attribute["index"] = _index
 				properties = append(properties, attribute)
+				_index = _index + 1
 			}
 			content.Properties = properties
-
+			contents = append(contents, content)
 		}
 		model.Content = contents
 		model.UniFieldsGroups = uniFieldsGroups
+
+		// fmt.Println(model)
+		if !DirExit(absEf) {
+			err := os.Mkdir(absEf, os.ModePerm)
+			if err != nil {
+				fmt.Println(err.Error())
+				panic(err)
+			}
+		}
+
+		result, err := json.Marshal(model)
+		if err = os.WriteFile(filepath.Join(absEf, modelName+".json"), result, 0777); err != nil {
+			fmt.Println(err.Error())
+			panic(err)
+		}
 	}
 }
